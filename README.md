@@ -84,4 +84,4 @@ Once the setup is complete, open a web browser and navigate to either of the fol
 - [http://localhost:8000](http://localhost:8000)
 - [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-Make sure to replace placeholders like `yourusername`, `yourproject`, `your_database_name`, `your_database_username`, and `your_database_password` with your actual project details.
+Make sure to replace placeholders like `your_database_name`, `your_database_username`, and `your_database_password` with your actual project details.
