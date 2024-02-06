@@ -18,13 +18,13 @@ Follow these steps to set up the project in your local environment:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
+   git clone https://github.com/SaiZack/HotelBookingSystem.git
    ```
 
 2. Navigate to the project folder:
 
    ```bash
-   cd yourproject
+   cd HotelBookingSystem
    ```
 
 3. Copy the `.env.example` file and rename it to `.env`:
