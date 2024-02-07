@@ -25,7 +25,7 @@
                             <i class="fa-solid fa-phone-volume me-2"></i> Phone: (+95) 123-456-789<br>
                         </div>
                         <div class="mb-5">
-                            <i class="fa-solid fa-envelope me-2"></i> Email: info@royalcrownhotel.com</p>
+                            <i class="fa-solid fa-envelope me-2"></i> Email: admin@crown.com</p>
                         </div>
                     </div>
                 </div>

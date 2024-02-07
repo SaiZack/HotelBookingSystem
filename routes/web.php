@@ -23,24 +23,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class,'landing'])->name('landing');
-Route::get('/about', [PageController::class,'about'])->name('about');
-Route::get('/contact', [PageController::class,'contact'])->name('contact');
-Route::post('/guest-info-add', [PageController::class,'guestInfoAdd'])->name('guest-info-add');
-Route::get('/guest-booking', [PageController::class,'guestBooking'])->name('guest-booking');
-Route::post('/guest-booking-add', [PageController::class,'guestBookingAdd'])->name('guest-booking-add');
-Route::get('/change-guest', [PageController::class,'changeGuest'])->name('change-guest');
-Route::get('/room-list', [PageController::class,'roomList'])->name('room-list');
+Route::controller(PageController::class)->group(function(){
+    Route::get('/', 'landing')->name('landing');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::post('/guest-info-add', 'guestInfoAdd')->name('guest-info-add');
+    Route::get('/guest-booking', 'guestBooking')->name('guest-booking');
+    Route::post('/guest-booking-add', 'guestBookingAdd')->name('guest-booking-add');
+    Route::get('/change-guest', 'changeGuest')->name('change-guest');
+    Route::get('/room-list', 'roomList')->name('room-list');
+});
 
 Route::prefix('/ajax')->name('ajax.')->controller(AjaxController::class)->group(function () {
     Route::get('/search-rooms', 'searchRooms')->name('search-rooms');
     Route::get('/update-status', 'updateStatus')->name('update-status');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware('auth')->prefix('/profile')->controller(ProfileController::class)->group(function () {
+    Route::get('/', 'edit')->name('profile.edit');
+    Route::patch('/', 'update')->name('profile.update');
+    Route::delete('/', 'destroy')->name('profile.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {

@@ -50,11 +50,11 @@
                         @elseif($col === 'icon')
                             <i class="fa-solid {{ $record->$col ?? 'fa-ellipsis' }} fa-lg"></i>
 
-                        @elseif($col === 'status')  
+                        @elseif($col === 'status')
                             @php
                                 $idx = $record->$col;
                             @endphp
-                            <span class='px-3 status-cols text-gray-600 border flex items-center py-1 h-full w-full rounded-md' 
+                            <span class='px-3 status-cols text-gray-600 border flex items-center py-1 h-full w-full rounded-md'
                                 style='background: {{config("status.status_bg_color.$idx")}}; border-color: {{config("status.status_border_color.$idx")}}'>
                                 <i class='fa-solid fa-{{config("status.status_icon.$idx")}} me-3'></i>
                                 {{ config("status.status_label.$idx") }}
@@ -64,7 +64,7 @@
                             $&nbsp;{{ $record->$col ?? 0 }}
 
                         @elseif($col === 'thumbnail')
-                            <a href="{{asset($record->$col)}}" class="underline text-blue-600">{{$record->$col ?? "/"}}</a>
+                            <a href="{{asset($record->$col)}}" target="_blank" class="underline text-blue-600">{{$record->$col ?? "/"}}</a>
 
                         @elseif($col === 'service_facility')
                             <div style="height: fit-content">
@@ -108,6 +108,7 @@
                             <i class="fa-solid fa-circle-info fa-lg text-blue-400"></i>
                         </a>
                     @endif
+
                     @if ($col === 'status' && $record->status != config("status.status_id.completed") && !isset($no_action))
                             <a class="px-1 mx-1 status-chg-btn cursor-pointer" title="Change Status" id="status_change{{$i}}" onclick="initDropdowns()" data-dropdown-toggle="changeStatus{{$i}}">
                                 <i class="fa-solid fa-ellipsis fa-lg"></i>
@@ -154,6 +155,7 @@
                             </div>
 
                     @endif
+
                     @if (isset($no_action))
                         <button type="button" disabled class="relative px-1 mx-1" title="restore">
                             <i class="fa-solid fa-rotate-left fa-lg text-green-600"></i>

@@ -70,7 +70,7 @@
 
 
         <!-- guest info modal -->
-        <div id="guest-modal" tabindex="-1" aria-hidden="true" class="bg-[#0005] backdrop-blur-sm fixed z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto inset-0 h-full max-h-full">
+        <div id="guest-modal" tabindex="-1" aria-hidden="true" class="bg-[#0009] backdrop-blur-sm fixed z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto inset-0 h-full max-h-full">
             <div class="w-full max-w-md max-h-full">
                 <!-- Modal content -->
                 <div class="fixed bg-white rounded-lg shadow top-[50%] left-1/2 translate-x-[-50%] translate-y-[-50%] min-w-[300px] w-1/4">
@@ -93,11 +93,11 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                             </div>
                             <div class="flex gap-3">
-                                <button data-modal-hide="guest-modal" type="button" class="w-full text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">
+                                <button id="cancel-guest-modal" data-modal-hide="guest-modal" type="button" class="w-full text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">
                                     Cancel
                                 </button>
                                 <button id="booking_submit" type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                    Submit Booking
+                                    Submit <span class="hidden lg:inline">Booking</span>
                                 </button>
                             </div>
                         </div>
@@ -109,21 +109,25 @@
     </form>
     <script>
         $(document).ready(function() {
-            $('#create-booking').click(function(e) {
-                e.preventDefault(); 
+            $('#create-booking').click((e) => {
+                e.preventDefault();
 
                 var guestId = $('#guest_id').val();
 
                 if (guestId !== '') {
                     $('#web_form').submit();
                 } else {
-                    $('#guest-modal').show();
+                    $('#guest-modal').fadeIn();
                 }
             });
 
-            $('#booking_submit').click(function() {
-                $('#web_form').submit(); 
+            $('#booking_submit').click(() => {
+                $('#web_form').submit();
             });
+
+            $('#cancel-guest-modal').click(()=>{
+                $('#guest-modal').fadeOut();
+            })
         });
     </script>
 @endsection

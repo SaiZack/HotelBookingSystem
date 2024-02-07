@@ -55,7 +55,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        dd('show');
+
     }
 
     /**
@@ -63,7 +63,6 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        dd('edit');
 
     }
 
@@ -72,7 +71,6 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        dd('update');
 
     }
 

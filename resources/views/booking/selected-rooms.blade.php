@@ -1,4 +1,3 @@
-
 <h3 class="mb-5 text-lg font-medium text-gray-900">Selected Rooms</h3>
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left text-gray-500">
